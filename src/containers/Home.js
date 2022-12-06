@@ -1,14 +1,13 @@
 import { connect } from 'react-redux'
 import Home from '../components/Home'
-import { addCar, removeCar } from '../redux/action'
+// import { addCar, removeCar } from '../redux/action'
 
 
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        addCar: (car) => dispatch(addCar(car)),
-        removeCar: (index) => dispatch(removeCar(index))
+        cars: state.cars
     }
 }
 
-export default connect(mapDispatchToProps)(Home)
+export default connect(mapStateToProps)(Home)

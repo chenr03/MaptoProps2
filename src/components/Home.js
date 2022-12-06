@@ -1,15 +1,9 @@
-
-
 import React from 'react'
 import { Card, CardContent, CardActions, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
-import state from '../redux/state'
 
 
 const Home = (props) => {
-    props = state
-    // console.log('state:', state);
-    // console.log("props", props);
     return (
         <div className="card-container">
 

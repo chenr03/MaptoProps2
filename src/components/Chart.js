@@ -21,7 +21,6 @@ const Chart = (props) => {
                 labelStyle={{
                     fill: 'white',
                     fontSize: 'small',
-                    border: ' 1px solid black'
                 }}
             />
             <Legend />
