@@ -7,10 +7,10 @@ Clone this repo and run `npm i` and then `npm start`
 #### Getting Familiar (DON'T SKIP THIS)
 
 * We're continuing to make make the Cars App more robust. This time we've added a Pie Chart, total, the ability to add and remove cars. Take a minute to go through the following files (under the components folder):
-    * Dashboard.js
+    * Listing.js
     * Chart.js
     * Total.js
-    * AddCar.js
+    * AddListing.js
 
 * Also, make sure to run the app and go to the dashboard page to see these components in action. Keep in mind that there are things that aren't connected yet. 
 
@@ -24,9 +24,9 @@ Clone this repo and run `npm i` and then `npm start`
 
 * Now we need to go to our `reducers.js` file and update the "cars" reducer. First, give it a second parameter called "action". This will represent whichever action is passed in on dispatch. Now it's time to change this function and give it a switch statement. You can reference prior material for this but ultimately we want to switch on `(action.type)`, provide a case for `ADD_CAR` that returns a copy of the state array plus the new car (`[ ...state, action.value]`) and handle the default case that simply returns the state.
 
-* We will be dispatching this action from the `AddCar` component so let's go look at that now. Notice there is a form that is collecting the input data. It happens in a dialog box that appears when you click the "Add Car" button on the dashboard page.
+* We will be dispatching this action from the `AddCar` component so let's go look at that now. Notice there is a form that is collecting the input data. It happens in a dialog box that appears when you click the "Add AdminView" button on the dashboard page.
 
-* We need to create a container for this component so that we can hook it up to Redux. Create a file called `AddCar.js` under the containers folder.
+* We need to create a container for this component so that we can hook it up to Redux. Create a file called `AddListing.js` under the containers folder.
 
 * Import the `{ connect }` function at the top of the file like we have in the other containers. Then, import the `AddCar` component from the components file. We also need to import the action so import `{ addCar }` from the "redux/actions" file.
 
@@ -47,9 +47,9 @@ Clone this repo and run `npm i` and then `npm start`
 
 * Once that's done it's time to update our reducer again. Go to `redux/reducers.js` and make another case statement for `REMOVE_CAR`. In this one, create a copy of the state and then splice the index out of it. Finally, return the copy variable you created. If you forget, the "splice" function takes a starting index and a number of items to delete as its parameters so it will look like this: `splice(action.value, 1)` where action.value is the index we are passing.
 
-* Ok so since the button we want to tie this to is in the Dashboard component and it already has a container.. we don't need to create a new one. We do need to go to `containers/Dashboard.js` and add the `mapDispatchToProps` function though. Do that right below that `mapStateToprops` one. This function should return an object with a key of "removeCar" and a value of `(index) => dispatch(removeCar(index))`. Also, don't forget to import that `{ removeCar }` action at the top of the file. We also need to ensure that we pass the `mapDispatchToProps` function to `connect`.
+* Ok so since the button we want to tie this to is in the Dashboard component and it already has a container.. we don't need to create a new one. We do need to go to `containers/Listing.js` and add the `mapDispatchToProps` function though. Do that right below that `mapStateToprops` one. This function should return an object with a key of "removeCar" and a value of `(index) => dispatch(removeCar(index))`. Also, don't forget to import that `{ removeCar }` action at the top of the file. We also need to ensure that we pass the `mapDispatchToProps` function to `connect`.
 
-* Now that everything is hooked up we need to use our new action. In the Dashboard.js COMPONENT, create an "onClick" method on the Icon (the last TableCell) that is a function. It should call `props.removeCar` with the index. The current index can be found in the beginning of the map function. Its value is "idx".
+* Now that everything is hooked up we need to use our new action. In the Listing.js COMPONENT, create an "onClick" method on the Icon (the last TableCell) that is a function. It should call `props.removeCar` with the index. The current index can be found in the beginning of the map function. Its value is "idx".
 
 * When you click the trash can icon the corresponding row should be removed. Is it working? If not, ask the instructor for direction.
 
@@ -57,7 +57,7 @@ Clone this repo and run `npm i` and then `npm start`
 
 * Now that we have that working we are going to practice what we learned last class and add containers and mapStateToProps function for the `Chart` and `Total` components. Why? Because we want these to always have the current "cars" information. We'll see how this is useful in a second.
 
-* Create a file called `Total.js` underneath the "containers" folder and create a `mapStateToProps` function. You can use the `Car.js` file as an example and simply change the component from "Car" to "Total".
+* Create a file called `Total.js` underneath the "containers" folder and create a `mapStateToProps` function. You can use the `AdminView.js` file as an example and simply change the component from "AdminView" to "Total".
 
 * Next, go to the Dashboard COMPONENT and change the import for "Total" to reference the container instead of the component. Ex. `import Total from './Total'`
 

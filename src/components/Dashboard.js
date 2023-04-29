@@ -23,8 +23,8 @@ const Dashboard = (props) => {
                 <AddCar carTotal={props.cars.length} />
             </div>
             <Table>
-                <TableHead>
-                    <TableRow>
+                <TableHead style={{textDecoration: ' 2px solid darkslateblue underline', borderBottom: '2px solid darkslateblue', borderTop: '2px solid lightblue'}} >
+                    <TableRow style={{borderBottom: 'solid black', borderTop: 'solid black'}}>
                         <TableCell>Id</TableCell>
                         <TableCell>Make/Model</TableCell>
                         <TableCell>MPG</TableCell>

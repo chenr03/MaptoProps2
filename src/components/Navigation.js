@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Navigation = () => {
     return (
         <AppBar position="relative">
-            <Toolbar>
+            <Toolbar style={{backgroundColor: 'slategrey'}}>
                 <IconButton color="inherit">
                     <MenuIcon />
                 </IconButton>
@@ -28,6 +28,7 @@ const Navigation = () => {
                 </ul>
             </Toolbar>
         </AppBar>
+
     )
 }
 
